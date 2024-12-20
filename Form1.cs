@@ -27,7 +27,7 @@ namespace Auto_Report_Tool_to_Office
             InitializeComponent();
         }
 
-        string cs = ConfigurationManager.ConnectionStrings["SCPM"].ConnectionString;
+        string cs = ConfigurationManager.ConnectionStrings["Louis"].ConnectionString;
 
         string FileName = @"C:\AutoMail\AutoTool.xls";
 
@@ -39,7 +39,7 @@ namespace Auto_Report_Tool_to_Office
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
-            cmd.CommandText = @"[Proc_2022_04_28_AutoTool_ReportToOffice_1]";
+            cmd.CommandText = @"[abc]";
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter sda = new SqlDataAdapter();
             con.Open();
@@ -128,7 +128,7 @@ namespace Auto_Report_Tool_to_Office
                     //var tit = ExcelWorkSheet.Cells[1, 1];
                     var tit = ExcelWorkSheet.Range["A1:O2"];
                     tit.Merge();
-                    tit.Value = "Southern California Precision Machining" +
+                    tit.Value = "COMPANY" +
                         "\r\n" + "Auto generate Tool was created on " + datetime_;
                     tit.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
                     tit.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
@@ -172,8 +172,8 @@ namespace Auto_Report_Tool_to_Office
 
 
                 //Chep file vao Server
-                string sourceDir = @"C:\AutoMail\AutoTool.xls";
-                string desDir = @"\\scpfs01\Shared\AutoMail\AutoTool.xls";
+                string sourceDir = @"C:\AutoTool.xls";
+                string desDir = @"\\Shared\AutoMail\AutoTool.xls";
 
                 File.Copy(sourceDir, desDir, true);
 
